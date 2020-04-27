@@ -104,6 +104,14 @@ module ActiveRecord
 
       ##
       # :singleton-method:
+      # Specify whether schema dump should happen at the end of the
+      # db:migrate rails command. This is true by default, which is useful for the
+      # development environment. This should ideally be false in the production
+      # environment where dumping schema is rarely needed.
+      mattr_accessor :skip_dump_schema_after_migration_for, instance_writer: false, default: []
+
+      ##
+      # :singleton-method:
       # Specifies which database schemas to dump when calling db:structure:dump.
       # If the value is :schema_search_path (the default), any schemas listed in
       # schema_search_path are dumped. Use :all to dump all schemas regardless
